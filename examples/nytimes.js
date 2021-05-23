@@ -14,9 +14,9 @@ const selectors = {
   },
 };
 
-example("nytimes.com", async (page, { step }) => {
+example("nytimes.com", async (page, { step, loadPage }) => {
   // using a lighter-weight starting page than the root
-  await page.goto("https://www.nytimes.com/sitemap");
+  await loadPage("https://www.nytimes.com/sitemap");
 
   await page.click(selectors.menuButton);
   await Promise.all([

@@ -1,8 +1,8 @@
 const { example } = require("../src/helpers");
 
-example("discord", async (page, { step }) => {
+example("discord", async (page, { step, loadPage }) => {
   // Go to https://discord.com/channels/197038439483310086/733488538393510049
-  await page.goto(
+  await loadPage(
     "https://discord.com/channels/679875946597056683/805450902940811285"
   );
 

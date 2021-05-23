@@ -6,8 +6,8 @@ const selectors = {
   canvas: "#canvas",
 };
 
-example("excalidraw", async (page, { action, step }) => {
-  await page.goto("https://excalidraw.com/");
+example("excalidraw", async (page, { action, loadPage, step }) => {
+  await loadPage("https://excalidraw.com/");
 
   const e = new Excalidraw(selectors.canvas);
   const center = await e.center(page);

@@ -17,8 +17,8 @@ const filter = (type, value) => async (page) => {
   await page.click(selectors.menuItem(value));
 };
 
-example("firebugs.dev", async (page, { step }) => {
-  await page.goto("https://firebugs.dev/");
+example("firebugs.dev", async (page, { step, loadPage }) => {
+  await loadPage("https://firebugs.dev/");
 
   await page.click(selectors.searchInput);
   await page.fill(selectors.searchInput, "break");

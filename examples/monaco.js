@@ -55,8 +55,8 @@ const selectors = {
 
 const waitForRunner = waitForFrameNavigated(/runner/);
 
-example("Monaco Editor", async (page, { action, step }) => {
-  await page.goto("https://microsoft.github.io/monaco-editor/playground.html");
+example("Monaco Editor", async (page, { action, loadPage, step }) => {
+  await loadPage("https://microsoft.github.io/monaco-editor/playground.html");
 
   await action("Iterate samples", async (page, { log }) => {
     for (const editor of editors) {

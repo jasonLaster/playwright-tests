@@ -48,8 +48,8 @@ const selectors = {
   },
 };
 
-example("ebay", async (page, { step }) => {
-  await page.goto("https://ebay.com/");
+example("ebay", async (page, { step, loadPage }) => {
+  await loadPage("https://ebay.com/");
 
   await step("Search for iPhone", async () => {
     await page.click(selectors.search.input);

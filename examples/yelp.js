@@ -24,8 +24,8 @@ function search(text) {
   };
 }
 
-example("Find a thai restaurant on yelp", async (page, { step }) => {
-  await page.goto("https://www.yelp.com/");
+example("Find a thai restaurant on yelp", async (page, { step, loadPage }) => {
+  await loadPage("https://www.yelp.com/");
 
   await step("Search for a thai restaurant", search("thai"));
   await step(

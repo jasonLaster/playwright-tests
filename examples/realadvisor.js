@@ -31,8 +31,8 @@ const selectors = {
   },
 };
 
-example("RealAdvisor", async (page, { step }) => {
-  await page.goto("https://realadvisor.ch/");
+example("RealAdvisor", async (page, { step, loadPage }) => {
+  await loadPage("https://realadvisor.ch/");
 
   await Promise.all([
     page.waitForNavigation(),

@@ -3,6 +3,8 @@ const fs = require("fs");
 require("dotenv").config();
 
 let browserName = process.env.PLAYWRIGHT_CHROMIUM ? "chromium" : "firefox";
+const isRecording = !!process.env.RECORD_REPLAY_RECORDING_ID_FILE;
+
 const launchOptions = {
   headless: !!process.env.PLAYWRIGHT_HEADLESS,
 };
@@ -21,6 +23,10 @@ const log = (...args) => {
   } else {
     console.log(...args);
   }
+};
+
+const writelog = (args) => {
+  fs.appendFileSync("./playwright-tests.log", JSON.stringify(args) + "\n");
 };
 
 function wrapped(cbk, pageLog = log, inline = false) {
@@ -63,9 +69,21 @@ function bindPageActions(page) {
     true
   );
 
+  const loadPage = async (url) => {
+    const startTime = new Date();
+    await page.goto(url);
+    writelog({
+      message: "startTime",
+      url,
+      time: new Date() - startTime,
+      recording: isRecording,
+    });
+  };
+
   actions.log = pageLog;
   actions.action = pageAction;
   actions.step = pageStep;
+  actions.loadPage = loadPage;
 
   return actions;
 }

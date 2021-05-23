@@ -7,8 +7,8 @@ const selectors = {
   sectionToggleButton: "button",
 };
 
-example("Cypress", async (page, { step }) => {
-  await page.goto("https://dashboard.cypress.io/projects/7s5okt/runs");
+example("Cypress", async (page, { step, loadPage }) => {
+  await loadPage("https://dashboard.cypress.io/projects/7s5okt/runs");
 
   await step("View flaky test result", async (page) => {
     await page.click(selectors.run);

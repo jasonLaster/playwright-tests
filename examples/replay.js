@@ -47,8 +47,8 @@ const selectors = {
   },
 };
 
-example("Replay", async (page, { action, step }) => {
-  await page.goto(
+example("Replay", async (page, { action, loadPage, step }) => {
+  await loadPage(
     "http://localhost:8080/view?id=053e7a46-c023-4843-8787-9b0254c077bf"
   );
   await step("Switch to Devtools", () => page.click(selectors.toggle.devtools));
@@ -64,7 +64,7 @@ example("Replay", async (page, { action, step }) => {
   // instead of line 20. If it hovers on line 19 and then clicks on line 20 then
   // the test will not finish.
 
-  await action("Test breakpoints", async (page, { step }) => {
+  await action("Test breakpoints", async (page, { step, loadPage }) => {
     // TODO: I _think_ the line hover is missed because the listener is attached
     // in an effect that hasn't fired yet. This brief delay allows time for that
     // to occur but an app fix or alternate approach may be warranted.

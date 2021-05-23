@@ -27,8 +27,8 @@ const enterText = (field, text) => async (page) => {
 
 const waitForPenRender = waitForFrameNavigated(/cdpn.io/);
 
-example("Create a codepen.io", async (page, { step }) => {
-  await page.goto("https://codepen.io/");
+example("Create a codepen.io", async (page, { step, loadPage }) => {
+  await loadPage("https://codepen.io/");
   await page.click(selectors.start);
 
   await page.click(selectors.html.pre);

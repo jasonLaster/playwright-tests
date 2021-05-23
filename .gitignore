@@ -3,3 +3,4 @@ browsers
 recordings.log
 metadata.log
 .env
+playwright-tests.log

@@ -20,8 +20,8 @@ function addInput(selector, text) {
   };
 }
 
-example("eraser", async (page, { action, step }) => {
-  await page.goto("https://app.tryeraser.com/");
+example("eraser", async (page, { action, loadPage, step }) => {
+  await loadPage("https://app.tryeraser.com/");
 
   await Promise.all([
     page.waitForSelector(selectors.draw.canvas),

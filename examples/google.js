@@ -8,8 +8,8 @@ const selectors = {
   },
 };
 
-example("google.com search", async (page, { step }) => {
-  await page.goto("https://www.google.com/");
+example("google.com search", async (page, { step, loadPage }) => {
+  await loadPage("https://www.google.com/");
 
   await step("Executing search", async () => {
     await page.click(selectors.search);

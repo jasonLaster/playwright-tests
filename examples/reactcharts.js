@@ -24,8 +24,8 @@ const examples = [
 
 const waitForSandbox = waitForFrameNavigated(/csb.app/);
 
-example("React-charts", async (page, { action }) => {
-  await page.goto("https://react-charts.tanstack.com/docs/overview");
+example("React-charts", async (page, { action, loadPage }) => {
+  await loadPage("https://react-charts.tanstack.com/docs/overview");
 
   for (const example of examples) {
     await action(example, async (page, { log }) => {

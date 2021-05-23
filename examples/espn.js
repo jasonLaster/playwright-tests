@@ -24,8 +24,8 @@ const search = (text) => async (page) => {
   await page.waitForNavigation();
 };
 
-example("ESPN", async (page, { step }) => {
-  await page.goto("https://www.espn.com/");
+example("ESPN", async (page, { step, loadPage }) => {
+  await loadPage("https://www.espn.com/");
 
   await step("Navigate to Golden State Warriors", async () => {
     await page.hover(selectors.nav.itemByText("NBA"));

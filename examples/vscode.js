@@ -73,9 +73,9 @@ const selectFile = async (path, page, doubleClick = false) => {
   await page.waitForTimeout(250);
 };
 
-example("Visual Studio Code", async (page, { action, step }) => {
+example("Visual Studio Code", async (page, { action, loadPage, step }) => {
   await step("Open Editor", async () => {
-    await page.goto("https://vscode-web-test-playground.azurewebsites.net/");
+    await loadPage("https://vscode-web-test-playground.azurewebsites.net/");
 
     await page.click('text="Click to Continue"');
 

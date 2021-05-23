@@ -33,8 +33,8 @@ const search = (text) => async (page) => {
   await page.click(selectors.search.results);
 };
 
-example("Codesandbox.io", async (page, { step }) => {
-  await page.goto("https://codesandbox.io/s/0d68e?file=/src/App.js");
+example("Codesandbox.io", async (page, { step, loadPage }) => {
+  await loadPage("https://codesandbox.io/s/0d68e?file=/src/App.js");
 
   await step("Navigate to index.js", async () => {
     await page.click(selectors.files.fileByName("index.js"));

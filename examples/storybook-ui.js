@@ -1,8 +1,8 @@
 const { example } = require("../src/helpers");
 const { selectors, openStory } = require("./shared/storybook");
 
-example("Storyboook UI", async (page, { action, step }) => {
-  await page.goto("https://5ccbc373887ca40020446347-qbeeoghter.chromatic.com/");
+example("Storyboook UI", async (page, { action, loadPage, step }) => {
+  await loadPage("https://5ccbc373887ca40020446347-qbeeoghter.chromatic.com/");
 
   await step("/Avatar/", openStory("/Avatar/"));
   await step("/Avatar/Large", openStory("/Avatar/Large"));

@@ -1,5 +1,6 @@
 const { example } = require("../src/helpers");
 const { getBoundingClientRect } = require("../src/dom");
+const { start } = require("node:repl");
 
 const selectors = {
   search: {
@@ -34,8 +35,10 @@ const selectors = {
 
 const getSliderBounds = getBoundingClientRect(selectors.results.filter.slider);
 
-example("TableCheck", async (page, { action, step }) => {
-  await page.goto("https://www.tablecheck.com/en/japan");
+example("TableCheck", async (page, { action, loadPage, step }) => {
+  // const startTime = new Date();
+  await loadPage("https://www.tablecheck.com/en/japan");
+  // console.log("Page load took", new Date() - startTime);
 
   await step("Search for Tokyo", async (page) => {
     await page.click(selectors.search.input);
@@ -46,7 +49,7 @@ example("TableCheck", async (page, { action, step }) => {
 
   await page.waitForSelector(selectors.results.item);
 
-  await action("Filter by budget", async (page, { step }) => {
+  await action("Filter by budget", async (page, { step, loadPage }) => {
     await page.click(selectors.results.filter.open);
     await page.waitForTimeout(1000); // animation timeout
 

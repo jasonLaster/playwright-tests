@@ -3,9 +3,9 @@ const { waitForFrameNavigated } = require("../src/dom");
 
 const waitForSample = waitForFrameNavigated(/mozit.cloud/);
 
-example("MDN WebGL Samples", async (page, { action, step }) => {
+example("MDN WebGL Samples", async (page, { loadPage, action, step }) => {
   await step("Basic scissoring", () =>
-    page.goto(
+    loadPage(
       "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/By_example/Basic_scissoring"
     )
   );
@@ -13,7 +13,7 @@ example("MDN WebGL Samples", async (page, { action, step }) => {
   await step("Clearing by clicking", async (page, { log }) => {
     const [frame] = await Promise.all([
       waitForSample(page),
-      page.goto(
+      loadPage(
         "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/By_example/Clearing_by_clicking"
       ),
     ]);
@@ -26,12 +26,12 @@ example("MDN WebGL Samples", async (page, { action, step }) => {
   });
 
   await step("Scissor animation", () =>
-    page.goto(
+    loadPage(
       "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/By_example/Scissor_animation"
     )
   );
   await step("Textures from code", () =>
-    page.goto(
+    loadPage(
       "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/By_example/Textures_from_code"
     )
   );

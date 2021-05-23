@@ -30,20 +30,19 @@ const clearCode = async (page) => {
   await page.keyboard.press("Backspace");
 };
 
-const login = (
-  username = "replaytestuser",
-  password = "ReplayTest123"
-) => async (page) => {
-  await page.click(selectors.login);
-  await page.click(selectors.username);
-  await page.fill(selectors.username, username);
-  await page.click(selectors.password);
-  await page.fill(selectors.password, password);
-  await page.click(selectors.loginButton);
-};
+const login =
+  (username = "replaytestuser", password = "ReplayTest123") =>
+  async (page) => {
+    await page.click(selectors.login);
+    await page.click(selectors.username);
+    await page.fill(selectors.username, username);
+    await page.click(selectors.password);
+    await page.fill(selectors.password, password);
+    await page.click(selectors.loginButton);
+  };
 
 example("repl.it", async (page, { step }) => {
-  await page.goto("https://replit.com/site/pricing");
+  await loadPage("https://replit.com/site/pricing");
 
   await step("Login", login());
   await step("Navigate to sample repl", async () => {

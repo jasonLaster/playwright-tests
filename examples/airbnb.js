@@ -47,24 +47,27 @@ const getPriceDragHandleBounds = getBoundingClientRect(
   selectors.results.filter.priceRange.handle
 );
 
-example("Search Airbnb for Tahoe", async (page, { action, step }) => {
-  await page.goto("https://www.airbnb.com/");
+example(
+  "Search Airbnb for Tahoe",
+  async (page, { action, loadPage, step, loadPage }) => {
+    await loadPage("https://www.airbnb.com/");
 
-  await step("Search for tahoe", search("tahoe"));
-  await action("Filter by Price", async (page, { log }) => {
-    const priceButton = await getPriceButton(page);
-    await priceButton.click();
+    await step("Search for tahoe", search("tahoe"));
+    await action("Filter by Price", async (page, { log }) => {
+      const priceButton = await getPriceButton(page);
+      await priceButton.click();
 
-    step("Click on start and end ranges", async () => {
-      const bounds = await getPriceDragHandleBounds(page);
-      const center = bounds.top + bounds.height / 2;
+      step("Click on start and end ranges", async () => {
+        const bounds = await getPriceDragHandleBounds(page);
+        const center = bounds.top + bounds.height / 2;
 
-      await page.mouse.click(bounds.left + 100, center);
-      await page.mouse.click(bounds.left + 300, center);
+        await page.mouse.click(bounds.left + 100, center);
+        await page.mouse.click(bounds.left + 300, center);
+      });
+
+      await page.click(selectors.results.filter.priceRange.save);
+
+      await page.waitForTimeout(1000);
     });
-
-    await page.click(selectors.results.filter.priceRange.save);
-
-    await page.waitForTimeout(1000);
-  });
-});
+  }
+);

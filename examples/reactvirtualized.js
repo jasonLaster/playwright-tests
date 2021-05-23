@@ -17,8 +17,8 @@ const scrollThroughList = async (page) => {
   }
 };
 
-example("react-virtualized", async (page, { step }) => {
-  await page.goto(
+example("react-virtualized", async (page, { step, loadPage }) => {
+  await loadPage(
     "https://bvaughn.github.io/react-virtualized/#/components/List"
   );
 

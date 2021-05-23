@@ -12,8 +12,8 @@ const selectors = {
   },
 };
 
-example("Notion - Replay Docs", async (page, { step }) => {
-  await page.goto(
+example("Notion - Replay Docs", async (page, { step, loadPage }) => {
+  await loadPage(
     "https://www.notion.so/replayio/Replay-Docs-56758667f53a4d51b7c6fc7a641adb02"
   );
 

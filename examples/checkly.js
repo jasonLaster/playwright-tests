@@ -2,9 +2,9 @@ const { example } = require("../src/helpers");
 
 example(
   `Checkly :: Log in, create an API check, run the API check`,
-  async (page, { action }) => {
+  async (page, { action, loadPage }) => {
     await page.setViewportSize({ width: 1280, height: 694 });
-    await page.goto("https://app.checklyhq.com?utm_source=monitoring", {
+    await loadPage("https://app.checklyhq.com?utm_source=monitoring", {
       waitUntil: "domcontentloaded",
     });
 

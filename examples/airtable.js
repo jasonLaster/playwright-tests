@@ -1,8 +1,8 @@
 const { example } = require("../src/helpers");
 const { loginToGoogle } = require("./shared/google");
 
-example("airtable", async (page, { step }) => {
-  await page.goto(
+example("airtable", async (page, { step, loadPage }) => {
+  await loadPage(
     "https://airtable.com/tbl2B9XDcGl90oG58/viwA7GIBsYINpwH0O?blocks=hide"
   );
 

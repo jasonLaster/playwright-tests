@@ -1,7 +1,7 @@
 const { example } = require("../src/helpers");
 
-example("Explore climatescape.org", async (page, { action }) => {
-  await page.goto("https://climatescape.org/");
+example("Explore climatescape.org", async (page, { action, loadPage }) => {
+  await loadPage("https://climatescape.org/");
 
   await action("Navigate to CIM", async (page) => {
     await page.click('text="Organizations"');

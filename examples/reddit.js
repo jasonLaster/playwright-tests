@@ -6,9 +6,9 @@ const selectors = {
   community: '*css=a >> button:text("Join")',
 };
 
-example("Reddit", async (page, { step }) => {
+example("Reddit", async (page, { step, loadPage }) => {
   // Lower-weight starting page to avoid load timeouts
-  await page.goto("https://www.reddit.com/topics/a-1/");
+  await loadPage("https://www.reddit.com/topics/a-1/");
 
   await step("Search for climate", async () => {
     await page.fill(selectors.search, "climate");

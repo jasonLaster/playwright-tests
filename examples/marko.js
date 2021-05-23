@@ -12,8 +12,8 @@ const selectors = {
   monaco,
 };
 
-example("Marko", async (page, { step }) => {
-  await page.goto("https://markojs.com/try-online/");
+example("Marko", async (page, { step, loadPage }) => {
+  await loadPage("https://markojs.com/try-online/");
   await page.waitForSelector(`${selectors.output} h1`);
 
   await clearInput(page, { timeout: 60000 });

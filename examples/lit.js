@@ -12,8 +12,8 @@ const selectors = {
 
 const waitForPreview = waitForFrameNavigated(/playground-projects/);
 
-example("lit.dev", async (page, { action, step }) => {
-  await page.goto("https://lit.dev/playground/");
+example("lit.dev", async (page, { action, loadPage, step }) => {
+  await loadPage("https://lit.dev/playground/");
 
   await action("examples/full-component", async () => {
     await page.click(selectors.drawer.sampleByPath("examples/full-component"));

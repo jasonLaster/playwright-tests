@@ -16,8 +16,8 @@ const selectors = {
   },
 };
 
-example("Unsplash", async (page, { step }) => {
-  await page.goto("https://unsplash.com/");
+example("Unsplash", async (page, { step, loadPage }) => {
+  await loadPage("https://unsplash.com/");
 
   await step("Search for trees", async () => {
     await page.click(selectors.search.input);
